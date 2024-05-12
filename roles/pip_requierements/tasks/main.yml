@@ -1,0 +1,10 @@
+tasks:
+  - name: Install proxmoxer python package
+    ansible.builtin.pip:
+      name: "{{ item }}"
+    loop:
+      - proxmoxer
+      - requests
+      - paramiko
+      - openssh_wrapper
+
