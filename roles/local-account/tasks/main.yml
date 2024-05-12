@@ -1,0 +1,33 @@
+---
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: Install basic packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ basic_packages }}"
+
+- name: Add svc-local-ansible user
+  ansible.builtin.user:
+    name: svc-local-ansible
+    shell: /bin/bash
+    password: "{{ vault_svc_local_password | password_hash('sha512') }}"
+    group: sudo
+
+- name: Make users passwordless for sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+
+- name:  edit /etc/resolv.conf
+  ansible.builtin.template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: "u=rw,g=r,o=r"

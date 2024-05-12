@@ -1,0 +1,5 @@
+---
+dns: "192.168.240.40"
+dc: "srv-ad-.tssr.local"
+domain: "tssr.local"
+domain_maj: "TSSR.LOCAL"

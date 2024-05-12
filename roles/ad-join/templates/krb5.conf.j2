@@ -1,0 +1,20 @@
+[libdefaults]
+default_realm = {{ domain_maj }}
+dns_lookup_realm = true
+dns_lookup_kdc = true
+ticket_lifetime = 24h
+forwardable = yes
+allow_weak_crypto = true
+permitted_enctypes = des-cbc-crc rc4-hmac des3-cbc-sha1-kd aes128-cts-hmac-sha1-96 aes256-cts-hmac-sha1-96
+
+[realms]
+{{ domain_maj }} = {
+kdc = {{ dc }}:88
+admin_server = {{ dc }}:749
+default_domain = {{ domain }}
+}
+
+[domain_realm]
+.{{ domain }} = {{ domain_maj }}
+{{ domain }} = {{ domain_maj }}
+ 

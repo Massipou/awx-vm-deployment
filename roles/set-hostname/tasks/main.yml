@@ -1,0 +1,12 @@
+---
+- name: Set a hostname specifying strategy
+  ansible.builtin.hostname:
+    name: "{{ vm_name|lower }}"
+    use: debian
+
+- name: Change /etc/hosts
+  ansible.builtin.replace:
+    path: /etc/hosts
+    regexp: 'tobe-deployed'
+    replace: "{{ vm_name }}"
+

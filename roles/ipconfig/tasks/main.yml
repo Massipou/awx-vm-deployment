@@ -1,0 +1,12 @@
+---
+- name: Change default gateway
+  ansible.builtin.replace:
+    path: /etc/network/interfaces
+    regexp: 'gateway.*'
+    replace: 'gateway "{{ default_gateway }}"'
+
+- name: Change ip and netmask
+  ansible.builtin.replace:
+    path: /etc/network/interfaces
+    regexp: 'address.*'
+    replace: 'address {{ static_ip_address }}/{{ netmask }}'
