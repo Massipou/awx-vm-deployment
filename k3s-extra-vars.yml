@@ -1,0 +1,8 @@
+static_ip_address: "192.168.155.11"
+netmask: 24
+default_gateway: "192.168.155.254"
+network_bridge: "vmbr2"
+
+vm_name: "SRV-K3S-NODE-1"
+template_name: "TEMPLATE-DEBIAN-12-K3S"
+ressource_pool: "k3s"

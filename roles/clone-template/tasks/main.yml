@@ -1,0 +1,29 @@
+---
+- name: Clone template
+  community.general.proxmox_kvm: 
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+    full: yes
+    node: pve2
+    pool: "{{ ressource_pool }}"
+    clone: "{{ template_name }}"
+    name: "{{ vm_name }}"
+    timeout: 120
+
+- name: Pause for 30 s until vm spawn
+  ansible.builtin.pause:
+    seconds: 30
+
+- name: Start VM
+  community.general.proxmox_kvm:
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+    name: "{{ vm_name }}"
+    node: pve2
+    state: started
+
+- name: Pause for 1 m until vm start
+  ansible.builtin.pause:
+    minutes: 1 

@@ -1,0 +1,8 @@
+static_ip_address: "192.168.240.132"
+netmask: 24
+default_gateway: "192.168.240.254"
+network_bridge: "vmbr1"
+
+vm_name: "SRV-DRBL"
+template_name: "TEMPLATE-DEBIAN-12-K3S"
+ressource_pool: "Techs"

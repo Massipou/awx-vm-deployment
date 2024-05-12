@@ -1,0 +1,24 @@
+---
+- name: Prepare env on localhost
+  hosts: localhost
+  vars_files: vault.yml
+  roles:
+    - role: clone-template
+      delegate_to: 127.0.0.1
+      ignore_errors: yes
+
+- hosts: spawned
+  vars_files: vault.yml
+  remote_user: "user"
+  roles:
+    - role: set-hostname
+      become: true
+      become_method: su
+    - role: local-account
+      become: true
+      become_method: su
+    - role: ipconfig
+      become: true
+      become_method: su
+    - role: switch-bridge
+      delegate_to: 127.0.0.1

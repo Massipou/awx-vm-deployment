@@ -1,0 +1,31 @@
+---
+- name: Power Off VM
+  community.general.proxmox_kvm: 
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+    name: "{{ vm_name }}"
+    state: "stopped"
+
+- name: Create NIC net0 the vm
+  community.general.proxmox_nic: 
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+    name: "{{ vm_name }}"
+    interface: "net0"
+    bridge: "{{ network_bridge }}"
+
+    # - name: Pause for second until reboot
+    #  ansible.builtin.pause:
+    #    seconds: 5
+
+- name: Power ON VM
+  community.general.proxmox_kvm: 
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+    name: "{{ vm_name }}"
+    state: "started"
+
+
