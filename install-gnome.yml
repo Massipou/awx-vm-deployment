@@ -1,5 +1,5 @@
 ---
-name: install pc-gnome
+- name: install pc-gnome
   hosts: spawned
   vars_files: vault.yml
   roles:
