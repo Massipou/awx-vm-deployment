@@ -12,7 +12,3 @@
   ansible.builtin.apt:
     upgrade: dist
 
-- name: Install pc firmware
-  ansible.builtin.apt:
-    name: live-task-non-free-firmware-pc
-    state: present
