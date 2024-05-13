@@ -1,6 +1,6 @@
 ---
 - name: install pc-gnome
-  hosts: spawned
+  hosts: post-spawned
   vars_files: vault.yml
   roles:
     - role: pc-gnome
