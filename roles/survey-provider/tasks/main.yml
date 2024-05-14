@@ -15,7 +15,7 @@
 
 - name: Populate dict
   set_fact:
-    vmlist: "{{ vminfos.proxmox_vms | map('select', 'match', '^name') | flatten }}" }}"
+    vmlist: "{{ vminfos.proxmox_vms | map('select', 'match', '^name') | flatten }}"
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
