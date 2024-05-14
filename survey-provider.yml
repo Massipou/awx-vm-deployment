@@ -3,6 +3,6 @@
   hosts: localhost
   gather_facts: false
   roles:
-    - pip_requierements
-    - survey-provider
+    - role: iip_requierements
+    - role: survey-provider
       delegate_to: 127.0.0.1
