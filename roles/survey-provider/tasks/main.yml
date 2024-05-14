@@ -10,10 +10,11 @@
     api_host: "192.168.99.17:8006"
     node: pve2
   register: vmlist
+  delegate_to: 127.0.0.1
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
-    var: vmlisy
+    var: vmlist
 
     # - name: Add start notification to Job Template
     # job_template:

@@ -4,4 +4,5 @@
   vars_files: vault.yml
   gather_facts: false
   roles:
+    - role: pip_requierements
     - role: survey-provider
