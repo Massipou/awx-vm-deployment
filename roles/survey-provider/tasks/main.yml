@@ -18,7 +18,7 @@
   template:
     src: my_survey.json.j2 
     dest: /tmp/out.json
-delegate_to: 127.0.0.1
+  delegate_to: 127.0.0.1
 
 - name: Edit template survey
   awx.awx.job_template:
