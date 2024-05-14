@@ -13,9 +13,8 @@
   register: pools
   become: true
 
-- name: Add start notification to Job Template
+- name: Edit template survey
   job_template:
     name: "{{ survey_template_name }}"
     survey_spec: "my_survey.json.j2"
-  delegate-to: 127.0.0.1
 
