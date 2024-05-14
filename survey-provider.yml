@@ -1,4 +1,5 @@
 - name: Get infos from proxmox and provide to awx survey
   hosts: localhost
   roles:
+    - pip_requierements
     - survey-provider
