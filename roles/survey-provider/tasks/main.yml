@@ -1,15 +1,15 @@
 ---
 - name: Get network brides
-  ansible.builtin.shell: echo $(cat /etc/network/interfaces | grep "auto vmbr*" | sed "s/auto //g") | sed "s/ /, /g"
+  ansible.builtin.shell: echo $(cat /etc/network/interfaces | grep "auto vmbr*" | sed "s/auto /\"/g") | sed "s/ /\", /g" | sed "s/$/\"/"
   register: bridges
 
 - name: Get Templates
-  ansible.builtin.shell: echo $(pvesh get /cluster/resources --type vm --output-format yaml | grep name | grep -i template | sed "s/^.*name. //g")| sed "s/ /, /g" 
+  ansible.builtin.shell: echo $(pvesh get /cluster/resources --type vm --output-format yaml | grep name | grep -i template | sed "s/^.*name. /\"/g")| sed "s/ /\", /g" | sed 's/$/"/' 
   register: templates
   become: true
 
 - name: Get Ressource Pools
-  ansible.builtin.shell: echo $(pvesh ls /pools --output-format yaml | grep name | sed "s/^.*name. //g")| sed "s/ /, /g"
+  ansible.builtin.shell: echo $(pvesh ls /pools --output-format yaml | grep name | sed "s/^.*name. /\"/g")| sed "s/ /\", /g" | sed 's/$/"/' 
   register: pools
   become: true
 
