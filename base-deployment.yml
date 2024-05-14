@@ -1,21 +1,12 @@
 ---
 - name: Prepare env on localhost
   hosts: localhost
-  vars_files: vault.yml
   roles:
     - role: pip_requierements
     - role: clone-template
-      delegate_to: 127.0.0.1
       ignore_errors: yes
 
 - hosts: spawned
-  vars_files: vault.yml
   roles:
     - role: set-hostname
       become: true
-    - role: local-account
-      become: true
-    - role: ipconfig
-      become: true
-    - role: switch-bridge
-      delegate_to: 127.0.0.1
