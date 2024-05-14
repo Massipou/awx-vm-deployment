@@ -1,0 +1,9 @@
+- hosts: all
+  roles:
+    - role: ipconfig
+      become: true
+
+- hosts: localhost 
+  roles:
+    - role: switch-bridge
+
