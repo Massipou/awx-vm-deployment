@@ -13,8 +13,15 @@
   register: pools
   become: true
 
+
+- name: template
+  template:
+    src: my_survey.json.j2 
+    dest: /tmp/out.json
+delegate_to: 127.0.0.1
+
 - name: Edit template survey
   awx.awx.job_template:
     name: "{{ survey_template_name }}"
-    survey_spec: my_survey.json.j2
+    survey_spec: /tmp/out.json
   delegate_to: 127.0.0.1
