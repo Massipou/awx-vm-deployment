@@ -1,0 +1,5 @@
+---
+- name: install pc-gnome
+  hosts: post-spawned
+  roles:
+    - role: pc-gnome
