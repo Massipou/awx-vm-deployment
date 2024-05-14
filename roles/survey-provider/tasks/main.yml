@@ -14,7 +14,7 @@
   become: true
 
 - set_fact: 
-    templates={{ templades.stdout }}
+    templates={{ templates.stdout }}
     pools={{ pools.stdout }}
     bridges={{ bridges.stdout }}
 
