@@ -9,8 +9,12 @@
     api_password: "{{ vault_svc_pveapi_psw }}"
     api_host: "192.168.99.17:8006"
     node: pve2
-  register: vmlist
+  register: vminfos
   delegate_to: 127.0.0.1
+
+  - name: Populate dict
+  set_fact:
+    vmlist: "{{ vminfos.proxmox_vms.keys()|list ) }}"
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
