@@ -13,6 +13,11 @@
   register: pools
   become: true
 
+- set_fact: 
+    templates={{ templades.stdout }}
+    pools={{ pools.stdout }}
+    bridges={{ bridges.stdout }}
+
 - name: template
   ansible.builtin.template:
     src: my_survey.json.j2 
