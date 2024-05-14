@@ -14,7 +14,7 @@
   become: true
 
 - name: template
-  tansible.builtin.template:
+  ansible.builtin.template:
     src: my_survey.json.j2 
     dest: /tmp/out.json
   delegate_to: 127.0.0.1
