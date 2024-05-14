@@ -25,6 +25,11 @@
     dest: /tmp/config
   delegate_to: 127.0.0.1
 
+
+- name: cat
+  ansible.builtin.shell: cat /tmp/out.json
+  delegate_to: 127.0.0.1
+
 - name: Edit template survey
   awx.awx.job_template:
     controller_config_file: /tmp/config
