@@ -1,8 +1,14 @@
 ---
+- name: pip requirement
+  hosts: localhost
+  vars_files: vault.yml
+  gather_facts: false
+  roles:
+    - role: pip_requierements
+
 - name: Get infos from proxmox and provide to awx survey
   hosts: all
   vars_files: vault.yml
   gather_facts: false
   roles:
-    - role: pip_requierements
     - role: survey-provider
