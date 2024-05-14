@@ -1,4 +1,4 @@
 - name: Get network brides
-  ansible.builtin.command: cat /etc/network/interfaces | grep "auto vmbr*" | sed "s/auto //g"
+  ansible.builtin.shell: cat /etc/network/interfaces | grep "auto vmbr*" | sed "s/auto //g"
   register: bridges
 
