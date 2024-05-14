@@ -1,8 +1,8 @@
 ---
 - name: Get infos from proxmox and provide to awx survey
   hosts: localhost
+  vars_files: vault.yml
   gather_facts: false
   roles:
     - role: pip_requierements
     - role: survey-provider
-      delegate_to: 127.0.0.1
