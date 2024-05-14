@@ -1,6 +1,7 @@
 ---
 - name: Get infos from proxmox and provide to awx survey
   hosts: all
+  vars_files: vault.yml
   gather_facts: false
   roles:
     - role: survey-provider
