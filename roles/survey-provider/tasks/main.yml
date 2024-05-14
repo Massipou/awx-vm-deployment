@@ -19,7 +19,7 @@
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
-    var: vmlist[0].name
+    var: vmlist[@].name
 
     # - name: Add start notification to Job Template
     # job_template:
