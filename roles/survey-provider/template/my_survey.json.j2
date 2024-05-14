@@ -1,0 +1,26 @@
+{
+    "name": "VM Deployment Survey",
+    "description": "Name of the VM",
+    "spec": [
+        {
+    	"type": "text",
+    	"question_name": "VM Name",
+    	"question_description": "Name of The VM",
+    	"variable": "vm_name",
+    	"required": true,
+    	"default": ""
+        },
+        {
+    	"type": "multiplechoice",
+    	"question_name": "Which template",
+    	"question_description": "Need one of these",
+    	"variable": "single_choice",
+    	"choices": [ {{ templates  }} ],
+    	"min": "",
+    	"max": "",
+    	"required": false,
+    	"default": "one"
+        },
+    ]
+    
+}
