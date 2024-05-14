@@ -1,6 +1,7 @@
 ---
 - name: Prepare env on localhost
   hosts: localhost
+  vars_files: vault.yml
   roles:
     - role: pip_requierements
     - role: clone-template

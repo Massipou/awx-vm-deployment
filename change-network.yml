@@ -3,7 +3,8 @@
     - role: ipconfig
       become: true
 
-- hosts: localhost 
+- hosts: localhost
+  vars_files: vault.yml
   roles:
     - role: switch-bridge
 
