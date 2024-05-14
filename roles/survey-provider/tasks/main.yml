@@ -12,7 +12,7 @@
   register: vminfos
   delegate_to: 127.0.0.1
 
-  - name: Populate dict
+- name: Populate dict
   set_fact:
     vmlist: "{{ vminfos.proxmox_vms.keys()|list ) }}"
 
