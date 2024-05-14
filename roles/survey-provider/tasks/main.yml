@@ -13,15 +13,21 @@
   register: pools
   become: true
 
-
 - name: template
-  template:
+  tansible.builtin.template:
     src: my_survey.json.j2 
     dest: /tmp/out.json
   delegate_to: 127.0.0.1
 
+- name: template
+  ansible.builtin.template:
+    src: config.j2 
+    dest: /tmp/config
+  delegate_to: 127.0.0.1
+
 - name: Edit template survey
   awx.awx.job_template:
+    controller_config_file: /tmp/config
     name: "{{ survey_template_name }}"
     survey_spec: "{{ lookup('file', '/tmp/out.json') }}"
   delegate_to: 127.0.0.1
