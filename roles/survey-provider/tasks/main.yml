@@ -4,12 +4,12 @@
   register: bridges
 
 - name: Get Templates
-  ansible.builtin.shell: echo $(pvesh get /cluster/resources --type vm --output-format yaml | grep name | grep -i template | sed "s/^.*name: //g")| sed "s/ /, /g" 
+  ansible.builtin.shell: echo $(pvesh get /cluster/resources --type vm --output-format yaml | grep name | grep -i template | sed "s/^.*name. //g")| sed "s/ /, /g" 
   register: templates
   become: true
 
 - name: Get Ressource Pools
-  ansible.builtin.shell: echo $(pvesh ls /pools --output-format yaml | grep name | sed "s/^.*name: //g")| sed "s/ /, /g"
+  ansible.builtin.shell: echo $(pvesh ls /pools --output-format yaml | grep name | sed "s/^.*name. //g")| sed "s/ /, /g"
   register: pools
   become: true
 
