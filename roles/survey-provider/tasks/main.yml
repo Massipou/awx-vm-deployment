@@ -15,11 +15,11 @@
 
 - name: Populate dict
   set_fact:
-    vmlist: "{{ vminfos.proxmox_vms }}"
+    vmlist: "{{ vminfos.proxmox_vms | flatten }}"
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
-    var: vmlist[0].name
+    var: vmlist.name
 
     # - name: Add start notification to Job Template
     # job_template:
