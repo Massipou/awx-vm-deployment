@@ -14,7 +14,7 @@
 
 - name: Populate dict
   set_fact:
-    vmlist: "{{ vminfos.proxmox_vms.keys()|list ) }}"
+    vmlist: "{{ vminfos.proxmox_vms.keys()|list }}"
 
 - name: Print return information from the previous task
   ansible.builtin.debug:
