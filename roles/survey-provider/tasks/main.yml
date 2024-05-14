@@ -14,7 +14,7 @@
   become: true
 
 - name: Edit template survey
-  job_template:
+  awx.awx.job_template:
     name: "{{ survey_template_name }}"
     survey_spec: "my_survey.json.j2"
-
+  delegate_to: 127.0.0.1
