@@ -1,6 +1,8 @@
 ---
 - name: Get infos from proxmox and provide to awx survey
   hosts: localhost
+  gather_facts: false
   roles:
     - pip_requierements
     - survey-provider
+    delegate_to: 127.0.0.1
