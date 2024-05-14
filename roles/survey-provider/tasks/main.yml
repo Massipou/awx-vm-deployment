@@ -3,27 +3,19 @@
   ansible.builtin.shell: echo $(cat /etc/network/interfaces | grep "auto vmbr*" | sed "s/auto //g") | sed "s/ /, /g"
   register: bridges
 
-- name: List all existing virtual machines on node
-  community.general.proxmox_vm_info:
-    api_user: "svc-deploy-vm@pve"
-    api_password: "{{ vault_svc_pveapi_psw }}"
-    api_host: "192.168.99.17:8006"
-    node: pve2
-    type: qemu
-  register: vminfos
-  delegate_to: 127.0.0.1
+- name: Get Templates
+  ansible.builtin.shell: echo $(pvesh get /cluster/resources --type vm --output-format yaml | grep name | grep -i template | sed "s/^.*name: //g")| sed "s/ /, /g" 
+  register: templates
+  become: true
 
-- name: Populate dict
-  set_fact:
-    vmlist: "{{ vminfos.proxmox_vms | flatten }}"
+- name: Get Ressource Pools
+  ansible.builtin.shell: echo $(pvesh ls /pools --output-format yaml | grep name | sed "s/^.*name: //g")| sed "s/ /, /g"
+  register: pools
+  become: true
 
-- name: Print return information from the previous task
-  ansible.builtin.debug:
-    var: vmlist[@].name
-
-    # - name: Add start notification to Job Template
-    # job_template:
-    # name: "{{ survey_template_name }}"
-    # survey_spec: "my_survey.json.j2"
-    # delegate-to: 127.0.0.1
+- name: Add start notification to Job Template
+  job_template:
+    name: "{{ survey_template_name }}"
+    survey_spec: "my_survey.json.j2"
+  delegate-to: 127.0.0.1
 

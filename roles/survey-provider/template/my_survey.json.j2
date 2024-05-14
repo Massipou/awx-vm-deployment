@@ -8,18 +8,64 @@
     	"question_description": "Name of The VM",
     	"variable": "vm_name",
     	"required": true,
-    	"default": ""
+    	"default": "SRV-"
         },
         {
     	"type": "multiplechoice",
     	"question_name": "Which template",
     	"question_description": "Need one of these",
-    	"variable": "single_choice",
+    	"variable": "template_name",
     	"choices": [ {{ templates  }} ],
     	"min": "",
     	"max": "",
-    	"required": false,
-    	"default": "one"
+    	"required": true,
+    	"default": "TEMPLATE-DEBIAN-12-K3S"
+        },
+        {
+    	"type": "multiplechoice",
+    	"question_name": "Which ressource pool",
+    	"question_description": "Need one of these",
+    	"variable": "ressource_pool",
+    	"choices": [ {{ pools }} ],
+    	"min": "",
+    	"max": "",
+    	"required": true,
+    	"default": "Techs"
+        },
+        {
+    	"type": "multiplechoice",
+    	"question_name": "Which Network bridge?",
+    	"question_description": "Need one of these",
+    	"variable": "network_bridge",
+    	"choices": [ {{ bridges  }} ],
+    	"min": "",
+    	"max": "",
+    	"required": true,
+    	"default": "vmbr1"
+        },
+	{
+    	"type": "text",
+    	"question_name": "IP address",
+    	"question_description": "Une ip",
+    	"variable": "static_ip_address",
+    	"required": true,
+    	"default": "192.168"
+        },
+        {
+    	"type": "text",
+    	"question_name": "Netwmask",
+    	"question_description": "I should be required",
+    	"variable": "netmask",
+    	"required": true,
+    	"default": "24"
+        },
+        {
+    	"type": "text",
+    	"question_name": "Default Gateway",
+    	"question_description": "I should be required",
+    	"variable": "netmask",
+    	"required": true,
+    	"default": "192.168"
         },
     ]
     
