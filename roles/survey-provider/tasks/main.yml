@@ -23,5 +23,5 @@
 - name: Edit template survey
   awx.awx.job_template:
     name: "{{ survey_template_name }}"
-    survey_spec: /tmp/out.json
+    survey_spec: "{{ lookup('file', '/tmp/out.json') }}"
   delegate_to: 127.0.0.1
