@@ -1,0 +1,7 @@
+- name: List existing nodes
+  community.general.proxmox_node_info:
+    api_user: "svc-deploy-vm@pve"
+    api_password: "{{ vault_svc_pveapi_psw }}"
+    api_host: "192.168.99.17:8006"
+  register: proxmox_nodes
+
