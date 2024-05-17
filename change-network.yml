@@ -1,9 +1,11 @@
-- hosts: all
+- name: Change Network
+  hosts: all
   roles:
     - role: ipconfig
       become: true
 
-- hosts: localhost
+- name: switch bridge
+  hosts: localhost
   vars_files: vault.yml
   roles:
     - role: switch-bridge
