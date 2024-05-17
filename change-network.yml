@@ -1,3 +1,9 @@
+- name: Prepare env on localhost
+  hosts: localhost
+  vars_files: vault.yml
+  roles:
+    - role: pip_requierements
+
 - name: Change Network
   hosts: all
   vars_files: vault.yml
