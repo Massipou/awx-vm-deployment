@@ -1,5 +1,6 @@
 - name: Change Network
   hosts: all
+  vars_files: vault.yml
   roles:
     - role: ipconfig
       become: true
