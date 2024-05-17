@@ -36,7 +36,7 @@
   delegate_to: 127.0.0.1
 
 - name: Edit template survey
-  awx.awx.job_template:
+  awx.awx.workflow_job_template:
     controller_config_file: /tmp/config
     validate_certs: false
     name: "{{ survey_template_name }}"
