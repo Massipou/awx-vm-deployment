@@ -1,6 +1,0 @@
-ansible_user: "user"
-ansible_password: "{{ vault_user_password }}"
-become_method: su
-ansible_become_password: "{{ vault_root_password }}"
-
-
