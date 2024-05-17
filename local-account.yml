@@ -1,6 +1,5 @@
 - name: Deploy local accounts
   hosts: all
-  vars_files: vault.yml
   roles:
     - role: local-account
       become: true
