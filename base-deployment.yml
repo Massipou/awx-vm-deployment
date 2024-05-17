@@ -7,7 +7,9 @@
     - role: clone-template
       ignore_errors: yes
 
-- hosts: spawned
+- name: set hostname
+  hosts: spawned
+  vars_files: vault.yml
   roles:
     - role: set-hostname
       become: true
